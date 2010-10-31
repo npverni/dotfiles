@@ -1,0 +1,6 @@
+alias gpl="git pull"
+alias gpu="git push"
+alias gcm="git commit -v"
+alias gco="git checkout"
+alias gst="git status"
+alias gad="git add"

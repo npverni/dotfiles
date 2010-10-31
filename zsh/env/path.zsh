@@ -1,0 +1,11 @@
+PATH=/opt/local/bin
+PATH=$PATH:/opt/subversion/bin
+PATH=$PATH:/usr/local/mysql-5.1.50-osx10.6-x86_64/bin
+PATH=$PATH:/opt/local/sbin
+PATH=$PATH:/usr/local/bin
+PATH=$PATH:/opt/local/bin
+PATH=$PATH:/Users/jrowe/Scripts/
+PATH=$PATH:/usr/bin
+PATH=$PATH:/bin
+PATH=$PATH:/sbin
+export PATH=$PATH:/usr/X11/bin
