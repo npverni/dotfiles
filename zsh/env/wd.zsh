@@ -1,2 +1,2 @@
 export WDHOME=$HOME/.wd
-source ~/.wd/wd.sh
+source ~/.wd/wdaliases.sh
