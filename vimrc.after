@@ -1,0 +1,4 @@
+colorscheme molokai
+
+au BufRead,BufNewFile *.rabl setf ruby
+au BufRead,BufNewFile *.thor setf ruby

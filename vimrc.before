@@ -1,0 +1,53 @@
+call janus#disable_plugin('syntastic')
+
+let mapleader = ","
+set listchars=tab:▸\ ,eol:¬
+
+highlight NonText guifg=#4a4a59
+highlight SpecialKey guifg=#4a4a59
+
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+function! <SID>StripEmptyLines()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    g/^$/d
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+function! ToggleTips()
+  if getwinvar(bufwinnr('~/.vim_tips'), '&previewwindow')
+    pclose
+  else
+    pedit ~/.vim_tips
+  endif
+endfunction
+
+nnoremap <F1> :call ToggleTips()<CR>
+nnoremap <F2> :w<CR>
+
+nmap <leader>l :set list!<CR>
+nmap <leader>vb :tabedit $MYVIMRC.before<CR>
+nmap <leader>va :tabedit $MYVIMRC.after<CR>
+nmap <leader>gb :tabedit $MYGVIMRC.before<CR>
+nmap <leader>ga :tabedit $MYGVIMRC.after<CR>
+nmap <leader>n :NERDTree<CR>
+nmap <leader>m :NERDTreeToggle<CR>
+nmap <leader>t :CommandT<CR>
+nmap <leader>p :b#<CR>
+
+nnoremap <silent> <leader>s :call <SID>StripTrailingWhitespaces()<CR>
+nnoremap <silent> <leader>e :call <SID>StripEmptyLines()<CR>
+
+nmap <SPACE> <SPACE>:noh<CR>
