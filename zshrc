@@ -30,6 +30,9 @@ alias vup="vagrant up"
 alias vdown="vagrant halt"
 alias vst="vagrant status"
 
+alias gst="git status"
+alias gpp="git pull && git push"
+
 function ad () {
   ~/.tidbits/lib/aliasdir.rb $@
   eval `~/.tidbits/lib/aliasdir.rb --dump`
