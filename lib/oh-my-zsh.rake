@@ -30,11 +30,11 @@ def home_dir
 end
 
 def oh_my_zsh_custom_destination
-  File.join(oh_my_zsh_destination, "custom")
+  File.join(oh_my_zsh_destination, "custom", "")
 end
 
 def oh_my_zsh_destination
-  File.join(home_dir, ".oh-my-zsh")
+  File.join(home_dir, ".oh-my-zsh", "")
 end
 
 def oh_my_zsh_are_installed?
