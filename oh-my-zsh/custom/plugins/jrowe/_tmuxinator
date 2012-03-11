@@ -1,0 +1,4 @@
+#compdef tmuxinator
+compadd $(tmuxinator list | grep -v "configs:" | awk '{ print $1 }')
+
+
