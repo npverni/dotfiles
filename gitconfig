@@ -63,6 +63,10 @@
 
   # +pre+ - shortcut for pull --rebase
   pre = pull --rebase
+
+  l = log -10 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(red)<%an>%Creset' --abbrev-commit --date=local
+  lg = log --graph --pretty=formatrmat:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(red)<%an>%Creset' --abbrev-commit --date=local
+  st = status
   
 [push]
   # default to tracking so git will only try to push the current branch
@@ -159,6 +163,7 @@
 [alias]
 	shave = stash pop
 	pluck = git stash pop
+	co = checkout
 #[diff]
 #	external = /usr/local/bin/changes_git
 [merge]
