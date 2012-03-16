@@ -35,6 +35,14 @@ function jr_git () {
   echo "ssh://jrowe@jeremyrowe.com:/git/$1"
 }
 
+function ta() {
+  tmux -C attach -t $1
+}
+
+function tko() {
+  tmux kill-session -t $1
+}
+
 [[ -s "$HOME/.tidbits/mhsrc" ]]                            && . "$HOME/.tidbits/mhsrc"
 [[ -s "$HOME/.rvm/scripts/rvm" ]]                          && . "$HOME/.rvm/scripts/rvm"
 [[ -s "$HOME/.tmuxinator/scripts/tmuxinator" ]]            && . "$HOME/.tmuxinator/scripts/tmuxinator"

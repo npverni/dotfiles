@@ -1,5 +1,7 @@
 call janus#disable_plugin('syntastic')
 
+set t_Co=256
+
 let mapleader = ","
 set listchars=tab:▸\ ,eol:¬
 
