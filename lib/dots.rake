@@ -10,7 +10,7 @@ include FileUtils
 
     cd DOTS_DIR do
       Dir['*'].each do |file|
-        next if %w[Rakefile README LICENSE lib zsh oh-my-zsh dots].include? file
+        next if %w[Rakefile README LICENSE lib zsh oh-my-zsh dots private_files].include? file
         next if finished
 
         if File.exist?(File.join(ENV['HOME'], ".#{file.sub('.erb', '')}"))
