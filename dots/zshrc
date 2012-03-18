@@ -16,43 +16,46 @@ autoload -U colors && colors
 source $ZSH/oh-my-zsh.sh
 export PATH="$HOME/bin":/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:"$HOME/.vims"
 
+[[ -s "$HOME/.tidbits/mhsrc" ]]                            && . "$HOME/.tidbits/mhsrc"
+[[ -s "$HOME/.rvm/scripts/rvm" ]]                          && . "$HOME/.rvm/scripts/rvm"
+[[ -s "$HOME/.tmuxinator/scripts/tmuxinator" ]]            && . "$HOME/.tmuxinator/scripts/tmuxinator"
+[[ -s "$HOME/.tmuxinator/scripts/tmuxinator-completion" ]] && . "$HOME/.tmuxinator/scripts/tmuxinator-completion"
+
+############################################
+#############     BUNDLER     ##############
+############################################
 alias b="bundle"
 alias be="b exec"
 alias ber="be rake"
 alias bes="be rspec"
 alias beu="be unicorn -p 3000"
 alias bert="be rake -T"
-
+############################################
+#############      GIT        ##############
+############################################
+alias    g="git"
+alias    gpp="g pull && git push"
+alias    gshave="g shave"
+alias    gstash="g stash"
+alias    gstatus="g status"
+function jrgit ()  { ssh jrmanage "mkdir -p /git/$1 && cd /git/$1 && git init --bare" && echo "jrmanage:/git/$1" }
+function jrgitls() { ssh jrmanage "ls /git/" }
+############################################
+#############      TMUX       ##############
+############################################
+alias    t="tmux"
+alias    tls="t ls"
+function tattach() { tmux -C attach -t $1 }
+function tkill()   { tmux kill-session -t $1 }
+function muxs()    { mux start $1 }
+############################################
+#############     VAGRANT     ##############
+############################################
 alias vup="vagrant up"
 alias vdown="vagrant halt"
 alias vstatus="vagrant status"
+############################################
+#############      OTHER      ##############
+############################################
+function show_alias() { cat ~/.zshrc | grep -v "function" | grep "alias" | second }
 
-alias g="git"
-alias gpp="g pull && git push"
-alias gshave="g shave"
-alias gstash="g stash"
-alias gstatus="g status"
-
-alias t="tmux"
-alias tls="t ls"
-
-function tattach() {
-  tmux -C attach -t $1
-}
-
-function tkill() {
-  tmux kill-session -t $1
-}
-
-function jrgit () {
-  ssh jrmanage "mkdir -p /git/$1 && cd /git/$1 && git init --bare" && echo "jrmanage:/git/$1"
-}
-
-function jrgitls() {
-  ssh jrmanage "ls /git/"
-}
-
-[[ -s "$HOME/.tidbits/mhsrc" ]]                            && . "$HOME/.tidbits/mhsrc"
-[[ -s "$HOME/.rvm/scripts/rvm" ]]                          && . "$HOME/.rvm/scripts/rvm"
-[[ -s "$HOME/.tmuxinator/scripts/tmuxinator" ]]            && . "$HOME/.tmuxinator/scripts/tmuxinator"
-[[ -s "$HOME/.tmuxinator/scripts/tmuxinator-completion" ]] && . "$HOME/.tmuxinator/scripts/tmuxinator-completion"
