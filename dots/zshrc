@@ -9,11 +9,13 @@ export EDITOR=vim
 ZSH_THEME="kolo"
 CASE_SENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
-plugins=(git brew jrowe osx rvm)
+plugins=(git brew jrowe rvm bundler)
 
 autoload -U colors && colors
 
-export PATH="$HOME/bin":/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:"$HOME/.vims"
+source $ZSH/oh-my-zsh.sh
+export CC=/usr/bin/gcc
+export PATH=/usr/local/bin:"$HOME/bin":/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:"$HOME/.vims":$PATH
 
 [[ -s "$HOME/.tidbits/mhsrc" ]]                            && . "$HOME/.tidbits/mhsrc"
 [[ -s "$HOME/.rvm/scripts/rvm" ]]                          && . "$HOME/.rvm/scripts/rvm"
@@ -30,6 +32,13 @@ alias bes="be rspec"
 alias beu="be unicorn -p 3000"
 alias bert="be rake -T"
 ############################################
+#############   IMAGEMAGICK   ##############
+############################################
+function ms() 
+{
+  identify $1|third
+}
+############################################
 #############      GIT        ##############
 ############################################
 alias    g="git"
@@ -39,6 +48,11 @@ alias    gstash="g stash"
 alias    gstatus="g status"
 function jrgit ()  { ssh jrmanage "mkdir -p /git/$1 && cd /git/$1 && git init --bare" && echo "jrmanage:/git/$1" }
 function jrgitls() { ssh jrmanage "ls /git/" }
+############################################
+#############      GIT        ##############
+############################################
+alias pg_start="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 ############################################
 #############      TMUX       ##############
 ############################################
@@ -56,6 +70,7 @@ alias vstatus="vagrant status"
 ############################################
 #############      OTHER      ##############
 ############################################
+alias rpow="rvm env . -- --env > .powenv"
 function show_alias() { cat ~/.zshrc | grep -v "function" | grep "alias" | second }
 
 source $ZSH/oh-my-zsh.sh
