@@ -15,7 +15,7 @@ autoload -U colors && colors
 
 source $ZSH/oh-my-zsh.sh
 export CC=/usr/bin/gcc
-export PATH=/usr/local/bin:"$HOME/bin":/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:"$HOME/.vims":$PATH
+export PATH=.:/usr/local/bin:"$HOME/bin":/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:"$HOME/.vims":$PATH
 
 [[ -s "$HOME/.tidbits/mhsrc" ]]                            && . "$HOME/.tidbits/mhsrc"
 [[ -s "$HOME/.rvm/scripts/rvm" ]]                          && . "$HOME/.rvm/scripts/rvm"
@@ -27,6 +27,7 @@ export PATH=/usr/local/bin:"$HOME/bin":/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/
 ############################################
 alias b="bundle"
 alias be="b exec"
+alias bec="be cucumber"
 alias ber="be rake"
 alias bes="be rspec"
 alias beu="be unicorn -p 3000"
@@ -72,5 +73,7 @@ alias vstatus="vagrant status"
 ############################################
 alias rpow="rvm env . -- --env > .powenv"
 function show_alias() { cat ~/.zshrc | grep -v "function" | grep "alias" | second }
+function intellij() { open -a IntelliJ\ IDEA\ 11\ CE $@ }
+function tgz() { tar -pczf $1.tgz $1 }
 
 source $ZSH/oh-my-zsh.sh
