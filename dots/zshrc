@@ -10,6 +10,7 @@ ZSH_THEME="bira"
 CASE_SENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 plugins=(git brew jrowe osx rvm)
+plugins=(git brew jrowe osx rvm bundler)
 
 autoload -U colors && colors
 
