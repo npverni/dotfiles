@@ -1,4 +1,5 @@
 call janus#disable_plugin('syntastic')
+set shell=/bin/bash
 
 set t_Co=256
 

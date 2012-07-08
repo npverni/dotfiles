@@ -3,3 +3,5 @@ hi CursorLine   cterm=NONE ctermbg=green ctermfg=white guibg=darkred guifg=white
 
 nmap <leader>n :maca toggleFileBrowser:<CR>
 nmap <leader>m :maca openFileBrowser:<CR>
+
+let g:returnApp = "MacVim"

@@ -77,3 +77,4 @@ function intellij() { open -a IntelliJ\ IDEA\ 11\ CE $@ }
 function tgz() { tar -pczf $1.tgz $1 }
 
 source $ZSH/oh-my-zsh.sh
+export RPROMPT="\$(~/.rvm/bin/rvm-prompt)"
