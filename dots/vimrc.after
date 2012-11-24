@@ -1,6 +1,42 @@
-colorscheme molokai
+colorscheme getafe
 
 au BufRead,BufNewFile *.rabl setf ruby
 au BufRead,BufNewFile *.thor setf ruby
 au BufRead,BufNewFile Gemfile setf ruby
 au BufRead,BufNewFile Gemfile.lock setf yaml
+au BufRead,BufNewFile *.node setf javascript
+au BufRead,BufNewFile *.handlebars,*.hbs,*.html.erb setf html
+
+set completefunc=syntaxcomplete#Complete
+
+set foldmethod=syntax
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+set foldlevel=1         "this is just what i use
+
+" Bubble single lines
+nmap <C-Up> ddkP
+nmap <C-Down> ddp
+" Bubble multiple lines
+vmap <C-Up> xkP`[V`]
+vmap <C-Down> xp`[V`]
+
+nmap <C-T> :A<CR>
+nmap <C-S> :shell<CR>
+nmap <leader>l :set list!<CR>
+nmap <leader>vb :tabedit $MYVIMRC.before<CR>
+nmap <leader>va :tabedit $MYVIMRC.after<CR>
+nmap <leader>gb :tabedit $MYGVIMRC.before<CR>
+nmap <leader>ga :tabedit $MYGVIMRC.after<CR>
+nmap <leader>n :NERDTreeToggle<CR>
+nmap <leader>m :NERDTreeFind<CR>
+nmap <leader>t :A<CR>
+nmap <leader>p :b#<CR>
+
+nnoremap <F1> <CR>
+nnoremap <F2> :w<CR>
+nnoremap <F3> :sp<CR>
+nnoremap <F4> :vsp<CR>
+
+hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+set cursorline

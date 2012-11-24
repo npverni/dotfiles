@@ -1,7 +1,6 @@
-set guifont=Bitstream\ Vera\ Sans\ Mono:h14
-hi CursorLine   cterm=NONE ctermbg=green ctermfg=white guibg=darkred guifg=white
+set guifont=Source\ Code\ Pro:h18
 
-nmap <leader>n :maca toggleFileBrowser:<CR>
-nmap <leader>m :maca openFileBrowser:<CR>
+nmap <leader>n :NERDTreeToggle<CR>
+nmap <leader>m :NERDTreeFind<CR>
 
 let g:returnApp = "MacVim"

@@ -18,6 +18,3 @@ design() { cd "$HOME/design/$1"; }
 _design() { _files -W "$HOME/design" -/; }
 compdef _design design
 
-t() { tmuxinator "$1"; }
-_t() { ls "$HOME/.tmuxinator" | sed 's@.yml@@g' ; }
-compdef _t t

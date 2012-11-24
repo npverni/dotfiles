@@ -7,3 +7,5 @@ alias    gshave="g shave"
 alias    gstash="g stash"
 alias    gstatus="g status"
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
