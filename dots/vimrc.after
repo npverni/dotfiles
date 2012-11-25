@@ -38,5 +38,5 @@ nnoremap <F2> :w<CR>
 nnoremap <F3> :sp<CR>
 nnoremap <F4> :vsp<CR>
 
-hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+hi CursorLine   cterm=NONE ctermbg=black guibg=black
 set cursorline
