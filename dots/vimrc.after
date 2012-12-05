@@ -1,5 +1,4 @@
-colorscheme getafe
-
+colorscheme busybee
 au BufRead,BufNewFile *.rabl setf ruby
 au BufRead,BufNewFile *.thor setf ruby
 au BufRead,BufNewFile Gemfile setf ruby

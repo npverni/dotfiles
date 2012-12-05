@@ -1,4 +1,8 @@
+
 call janus#disable_plugin('syntastic')
+call janus#disable_plugin('nerdtree')
+let g:loaded_netrw        = 1 " Disable netrw
+let g:loaded_netrwPlugin  = 1 " Disable netrw
 
 set nocursorcolumn
 set nocursorline
@@ -38,3 +42,4 @@ nnoremap <silent> <leader>s :call <SID>StripTrailingWhitespaces()<CR>
 nnoremap <silent> <leader>e :call <SID>StripEmptyLines()<CR>
 
 nmap <SPACE> <SPACE>:noh<CR>
+
