@@ -163,6 +163,8 @@
 	pluck = git stash pop
 	co = checkout
 	sourcetree = !open -a SourceTree .
+	aa = add --all
+	unstage = reset HEAD
 #[diff]
 #	external = /usr/local/bin/changes_git
 [difftool "sourcetree"]
