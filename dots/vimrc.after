@@ -1,5 +1,4 @@
-colorscheme getafe
-
+colorscheme github
 au BufRead,BufNewFile *.rabl setf ruby
 au BufRead,BufNewFile *.thor setf ruby
 au BufRead,BufNewFile Gemfile setf ruby
@@ -38,5 +37,3 @@ nnoremap <F2> :w<CR>
 nnoremap <F3> :sp<CR>
 nnoremap <F4> :vsp<CR>
 
-hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-set cursorline

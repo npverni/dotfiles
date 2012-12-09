@@ -1,3 +1,5 @@
+[alias]
+  l = "!. ~/.githelpers && pretty_git_log"
 
 # -- START TIDBITS --
 ############################################################
@@ -99,7 +101,7 @@
   diff = auto
   status = auto
 [core]
-  editor = mvim
+  editor = vim
 [alias]
   br = branch
   st = status
@@ -149,7 +151,7 @@
 # END SHARED GIT CONFIGURATION
 ############################################################
 [core]
-	editor = mvim -f
+	editor = vim
 	excludesfile = /Users/jrowe/.gitignore_global
 [color]
 	ui = true
@@ -161,6 +163,8 @@
 	pluck = git stash pop
 	co = checkout
 	sourcetree = !open -a SourceTree .
+	aa = add --all
+	unstage = reset HEAD
 #[diff]
 #	external = /usr/local/bin/changes_git
 [difftool "sourcetree"]
