@@ -160,7 +160,7 @@
 	email = jeremy.w.rowe@gmail.com
 [alias]
 	shave = stash pop
-	pluck = git stash pop
+	pluck = stash pop
 	co = checkout
 	sourcetree = !open -a SourceTree .
 	aa = add --all
