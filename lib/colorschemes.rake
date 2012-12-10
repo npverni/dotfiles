@@ -5,18 +5,18 @@ include FileUtils
 desc "Grabs and installs the tomorrow theme"
 task :tomorrow_night do
   git_url = 'https://github.com/chriskempson/tomorrow-theme.git'
-  fetch_theme git_url, vim_files: 'vim/colors/*.vim', terminal_files: "OS\\ X\\ Terminal/*.terminal"
+  fetch_theme git_url, :vim_files => 'vim/colors/*.vim', :terminal_files => "OS\\ X\\ Terminal/*.terminal"
 end
 
 desc "Grabs and installs the ir_black theme"
 task :ir_black do
   git_url = "https://github.com/jperkins/IR-Black.git"
-  fetch_theme git_url, terminal_files: '*.terminal'
+  fetch_theme git_url, :terminal_files => '*.terminal'
 end
 
 private
 
-def fetch_theme(git_url, opts={vim_files: false, terminal_files: false})
+def fetch_theme(git_url, opts={:vim_files => false, :terminal_files => false})
   theme_name = git_url[/.*\/(.*)\.git/, 1]
   theme_dir  = File.join(tmp, theme_name)
   mkdir_p vim_theme_dir
