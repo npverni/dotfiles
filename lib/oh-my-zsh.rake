@@ -20,7 +20,7 @@ end
 
 desc "Copy all custom oh-my-zsh plugins to the proper place"
 task :copy_custom_oh_my_zsh do
-  cp_r File.join(OH_MY_ZSH_DIR, "custom"), oh_my_zsh_custom_destination
+  cp_r File.join(OH_MY_ZSH_DIR, "custom", "plugins"), oh_my_zsh_custom_destination
 end
 
 private
