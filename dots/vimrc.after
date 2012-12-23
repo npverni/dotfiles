@@ -1,4 +1,4 @@
-colorscheme Tomorrow-Night-Bright
+colorscheme idleFingers
 au BufRead,BufNewFile *.rabl setf ruby
 au BufRead,BufNewFile *.thor setf ruby
 au BufRead,BufNewFile Gemfile setf ruby
@@ -8,7 +8,7 @@ au BufRead,BufNewFile *.handlebars,*.hbs,*.html.erb setf html
 
 set completefunc=syntaxcomplete#Complete
 
-set foldmethod=syntax
+set foldmethod=indent
 set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use

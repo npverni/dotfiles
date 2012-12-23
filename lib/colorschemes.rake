@@ -11,7 +11,19 @@ end
 desc "Grabs and installs the ir_black theme"
 task :ir_black do
   git_url = "https://github.com/jperkins/IR-Black.git"
-  fetch_theme git_url, :terminal_files => '*.terminal'
+  fetch_theme git_url, :terminal_files => '*.terminal', :vim_files => false
+end
+
+desc "Grabs and installs the idleFingers theme"
+task :idlefingers do
+  git_url = "https://github.com/shinzui/vim-idleFingers.git"
+  fetch_theme git_url, :vim_files => "colors/*.vim", :terminal_files => false
+end
+
+desc "Grabs and installs the espresso theme"
+task :espresso do
+  git_url = "https://github.com/JCBarry/espresso.terminal.git"
+  fetch_theme git_url, :vim_files => false, :terminal_files => '*.terminal'
 end
 
 private
