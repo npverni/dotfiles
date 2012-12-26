@@ -64,7 +64,6 @@ end
 def vim_plugins
   @vim_plugins ||= %w{
     https://github.com/vim-scripts/Align.git
-    https://github.com/Raimondi/delimitMate.git
     https://github.com/nono/vim-handlebars.git
     https://github.com/Lokaltog/vim-powerline.git
     https://github.com/tpope/vim-surround.git
