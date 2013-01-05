@@ -1,4 +1,5 @@
 set guifont=Source\ Code\ Pro:h18
+colorscheme Tomorrow-Night-Bright
 
 nmap <leader>n :NERDTreeToggle<CR>
 nmap <leader>m :NERDTreeFind<CR>
