@@ -26,12 +26,13 @@ source $ZSH/oh-my-zsh.sh
 #############     BUNDLER     ##############
 ############################################
 alias b="bundle"
-alias be="b exec"
-alias bec="RUBYOPT=W0 be cucumber"
-alias becp="RUBYOPT=W0 be cucumber -f pretty"
-alias bes="RUBYOPT=W0 be spec"
-alias ber="RUBYOPT=W0 be rspec"
+alias be="RUBYOPT=W0 b exec"
+alias bec="be cucumber"
+alias becp="be cucumber -f pretty"
+alias bes="be spec"
+alias ber="be rspec"
 alias beu="be unicorn -p 3000"
+alias beef="be rspec --format Fuubar --color --fail-fast"
 ############################################
 #############   IMAGEMAGICK   ##############
 ############################################
