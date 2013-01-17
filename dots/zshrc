@@ -32,7 +32,8 @@ alias becp="be cucumber -f pretty"
 alias bes="be spec"
 alias ber="be rspec"
 alias beu="be unicorn -p 3000"
-alias beef="be rspec --format Fuubar --color --fail-fast"
+alias beer="be rspec --format Fuubar --color"
+alias beef="beer --fail-fast"
 ############################################
 #############   IMAGEMAGICK   ##############
 ############################################
