@@ -18,6 +18,20 @@ set listchars=tab:▸\ ,eol:¬
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 
+function! <SID>CloseHiddenBuffers()
+  let visible = {}
+  for t in range(1, tabpagenr('$'))
+    for b in tabpagebuflist(t)
+      let visible[b] = 1
+    endfor
+  endfor
+  for b in range(1, bufnr('$'))
+    if bufexists(b) && !has_key(visible, b)
+      execute 'bwipeout' b
+    endif
+  endfor
+endfun
+
 function! <SID>StripTrailingWhitespaces()
     " Preparation: save last search, and cursor position.
     let _s=@/
@@ -40,6 +54,11 @@ endfunction
 
 nnoremap <silent> <leader>s :call <SID>StripTrailingWhitespaces()<CR>
 nnoremap <silent> <leader>e :call <SID>StripEmptyLines()<CR>
+nnoremap <silent> <leader>q :call <SID>CloseHiddenBuffers()<CR>
 
 nmap <SPACE> <SPACE>:noh<CR>
+
+let g:Powerline_colorscheme = 'solarized256'
+set laststatus=2
+set statusline=\ %f%m%r%h%w\ %=%({%{&ff}\|%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}%k\|%Y}%)\ %([%l,%v][%p%%]\ %)
 

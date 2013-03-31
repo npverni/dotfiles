@@ -1,2 +1,2 @@
-export PATH=/usr/local/bin:"$HOME/bin":"$HOME/.rbenv/bin":$PATH:/usr/local/share/npm/bin/
+export PATH=/usr/local/bin:"$HOME/bin":"$HOME/.rbenv/bin":$PATH:/usr/local/share/npm/bin:/usr/local/share/python
 eval "$(rbenv init -)"

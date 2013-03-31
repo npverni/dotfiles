@@ -166,6 +166,7 @@
 	aa = add --all
 	unstage = reset HEAD
 	recent = for-each-ref --count=5 --sort=-committerdate refs/heads/ --format='%(refname:short)'
+  hard = reset --hard
 #[diff]
 #	external = /usr/local/bin/changes_git
 [difftool "sourcetree"]

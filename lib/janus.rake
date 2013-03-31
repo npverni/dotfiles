@@ -67,5 +67,6 @@ def vim_plugins
     https://github.com/nono/vim-handlebars.git
     https://github.com/Lokaltog/vim-powerline.git
     https://github.com/tpope/vim-surround.git
+    https://github.com/kien/rainbow_parentheses.vim.git
   }
 end

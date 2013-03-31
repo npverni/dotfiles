@@ -100,24 +100,6 @@ function clone() {
   git clone $1
 }
 
-#alias rm/="/bin/rm"
-
-#function rm () {
-  #local path
-  #for path in "$@"; do
-    ## ignore any arguments
-    #if [[ "$path" = -* ]]; then :
-    #else
-      #local dst=${path##*/}
-      ## append the time if necessary
-      #while [ -e ~/.Trash/"$dst" ]; do
-        #dst="$dst "$(date +%H-%M-%S)
-      #done
-      #/bin/mv "$path" ~/.Trash/"$dst"
-    #fi
-  #done
-#}
-
 function bigdump() {
   mysqldump --opt -u root $1
 }
@@ -127,3 +109,22 @@ source $ZSH/oh-my-zsh.sh
 export PATH=.:$HOME/.rbenv/bin:$PATH:/usr/local/bin:"$HOME/bin":/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:"$HOME/.vims":$PATH
 
 eval "$(rbenv init -)"
+# Add the following to your ~/.bashrc or ~/.zshrc
+#
+# Alternatively, copy/symlink this file and source in your shell.  See `hitch --setup-path`.
+
+function hitch() {
+  command hitch "$@"
+  if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
+}
+alias unhitch='hitch -u'
+
+# Uncomment to persist pair info between terminal instances
+# hitch
+
+unamestr=`uname`
+if [[ "$unamestr" == 'Darwin' ]]; then
+  alias v='mvim -v'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+  alias v='vi'
+fi

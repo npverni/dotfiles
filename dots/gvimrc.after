@@ -1,5 +1,5 @@
-set guifont=Source\ Code\ Pro:h24
-colorscheme github
+set guifont=Source\ Code\ Pro:h18
+colorscheme wombat256
 
 nmap <leader>n :NERDTreeToggle<CR>
 nmap <leader>m :NERDTreeFind<CR>
