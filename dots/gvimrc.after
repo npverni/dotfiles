@@ -1,5 +1,5 @@
-set guifont=Source\ Code\ Pro:h18
-colorscheme wombat256
+set guifont=Courier\ New:h22
+colorscheme solarized
 
 nmap <leader>n :NERDTreeToggle<CR>
 nmap <leader>m :NERDTreeFind<CR>

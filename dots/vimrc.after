@@ -1,4 +1,7 @@
-colorscheme wombat256
+set background=dark
+set mouse=a
+colorscheme solarized
+
 au BufRead,BufNewFile *.rabl setf ruby
 au BufRead,BufNewFile *.thor setf ruby
 au BufRead,BufNewFile Gemfile setf ruby
@@ -9,7 +12,7 @@ au BufRead,BufNewFile *.handlebars,*.hbs,*.html.erb setf html
 set completefunc=syntaxcomplete#Complete
 
 set foldmethod=indent
-set foldnestmax=10      "deepest fold is 10 levels
+set foldnestmax=4       "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
 
@@ -20,8 +23,6 @@ nmap <C-Down> ddp
 vmap <C-Up> xkP`[V`]
 vmap <C-Down> xp`[V`]
 
-nmap <C-T> :A<CR>
-nmap <C-S> :shell<CR>
 nmap <leader>l :set list!<CR>
 nmap <leader>vb :tabedit $MYVIMRC.before<CR>
 nmap <leader>va :tabedit $MYVIMRC.after<CR>
@@ -32,16 +33,26 @@ nmap <leader>m :NERDTreeFind<CR>
 nmap <leader>t :A<CR>
 nmap <leader>p :b#<CR>
 nmap <Leader>j !python -m json.tool<CR>
+nmap <Leader>, :sp ~/Dropbox/work/chargify/notes/project-notes.txt<cr>
+nmap <Leader>. :sp ~/Dropbox/personal/notes/project-notes.txt<cr>
+nmap <Leader>/ :sp ~/Dropbox/personal/notes/wade-notes.txt<cr>
 
-nnoremap <F1> <CR>
-nnoremap <F2> :w<CR>
-nnoremap <F3> :sp<CR>
-nnoremap <F4> :vsp<CR>
+imap <F1> <Esc><CR>
+imap <F2> <Esc>:w<CR>
+imap <F3> <Esc>:sp<CR>
+imap <F4> <Esc>:vsp<CR>
+
+nmap <C-T> <Esc>:A<CR>
+nmap <C-S> <Esc>:w<CR>
+nmap <C-Q> <Esc>:x<CR>
 
 nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
+
+vmap <C-x> :!pbcopy<CR>  
+vmap <C-c> :w !pbcopy<CR><CR> 
 
 call pathogen#infect()
 
@@ -65,3 +76,4 @@ let g:rbpt_colorpairs = [
     \ ]
 
 au VimEnter * RainbowParenthesesToggle
+set listchars=tab:▸\

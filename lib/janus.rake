@@ -68,5 +68,8 @@ def vim_plugins
     https://github.com/Lokaltog/vim-powerline.git
     https://github.com/tpope/vim-surround.git
     https://github.com/kien/rainbow_parentheses.vim.git
+    https://github.com/vim-scripts/easytags.vim.git
+    https://github.com/tpope/gem-ctags.git
+    https://github.com/tpope/vim-bundler.git
   }
 end

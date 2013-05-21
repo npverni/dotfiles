@@ -1,5 +1,6 @@
 [alias]
   l = "!. ~/.githelpers && pretty_git_log"
+  ctag = "describe --abbrev=0 --tags"
 
 # -- START TIDBITS --
 ############################################################
@@ -101,7 +102,7 @@
   diff = auto
   status = auto
 [core]
-  editor = vim
+  editor = "mvim -f"
 [alias]
   br = branch
   st = status
@@ -151,7 +152,7 @@
 # END SHARED GIT CONFIGURATION
 ############################################################
 [core]
-	editor = vim
+	editor = "mvim -f"
 	excludesfile = /Users/jrowe/.gitignore_global
 [color]
 	ui = true
@@ -188,3 +189,5 @@
 	prompt = false
 [merge]
 	tool = Kaleidoscope
+[pull]
+	rebase = true

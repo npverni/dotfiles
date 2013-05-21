@@ -1,5 +1,10 @@
+set encoding=utf-8
+set fillchars+=stl:\ ,stlnc:\
+set laststatus=2
 
-call janus#disable_plugin('syntastic')
+set wildignore+=*/tmp/*,*/source_maps/*,*.so,*.swp,*.zip,tags,.git/*,.DS_Store
+
+"call janus#disable_plugin('syntastic')
 "call janus#disable_plugin('nerdtree')
 let g:loaded_netrw        = 1 " Disable netrw
 let g:loaded_netrwPlugin  = 1 " Disable netrw
@@ -13,7 +18,6 @@ set shell=/bin/bash
 set t_Co=256
 
 let mapleader = ","
-set listchars=tab:▸\ ,eol:¬
 
 highlight NonText guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
@@ -30,6 +34,7 @@ function! <SID>CloseHiddenBuffers()
       execute 'bwipeout' b
     endif
   endfor
+  execute 'bd'
 endfun
 
 function! <SID>StripTrailingWhitespaces()
@@ -52,13 +57,23 @@ function! <SID>StripEmptyLines()
     call cursor(l, c)
 endfunction
 
+" Search for the ... arguments separated with whitespace (if no '!'),
+" or with non-word characters (if '!' added to command).
+function! SearchMultiLine(bang, ...)
+  if a:0 > 0
+    let sep = (a:bang) ? '\_W\+' : '\_s\+'
+    let @/ = join(a:000, sep)
+  endif
+endfunction
+command! -bang -nargs=* -complete=tag S call SearchMultiLine(<bang>0, <f-args>)|normal! /<C-R>/<CR>
+
+
 nnoremap <silent> <leader>s :call <SID>StripTrailingWhitespaces()<CR>
 nnoremap <silent> <leader>e :call <SID>StripEmptyLines()<CR>
 nnoremap <silent> <leader>q :call <SID>CloseHiddenBuffers()<CR>
 
+autocmd! bufwritepost .vimrc.before source %
+autocmd! bufwritepost .vimrc.after  source %
+autocmd! bufwritepost .gvimrc.after source %
+
 nmap <SPACE> <SPACE>:noh<CR>
-
-let g:Powerline_colorscheme = 'solarized256'
-set laststatus=2
-set statusline=\ %f%m%r%h%w\ %=%({%{&ff}\|%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}%k\|%Y}%)\ %([%l,%v][%p%%]\ %)
-
