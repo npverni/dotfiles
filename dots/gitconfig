@@ -1,5 +1,7 @@
 [alias]
-  l = "!. ~/.githelpers && pretty_git_log"
+  l = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --"
+  lf = "log --name-status --pretty=format:'%Cred%h%Creset -%C(yellow)%d %Cgreen(%cr) %C(bold blue)<%an>%Creset \n%s\n%Creset' --abbrev-commit --"
+  lp = "log -p"
   ctag = "describe --abbrev=0 --tags"
 
 # -- START TIDBITS --
@@ -26,6 +28,7 @@
   status = auto
 [core]
   editor = emacs
+
 [alias]
   br = branch
   st = status
@@ -102,7 +105,7 @@
   diff = auto
   status = auto
 [core]
-  editor = "mvim -f"
+  editor = "vi"
 [alias]
   br = branch
   st = status
@@ -152,7 +155,7 @@
 # END SHARED GIT CONFIGURATION
 ############################################################
 [core]
-	editor = "mvim -f"
+	editor = "vi"
 	excludesfile = /Users/jrowe/.gitignore_global
 [color]
 	ui = true
@@ -168,6 +171,7 @@
 	unstage = reset HEAD
 	recent = for-each-ref --count=5 --sort=-committerdate refs/heads/ --format='%(refname:short)'
   hard = reset --hard
+	ctags = !.git/hooks/ctags
 #[diff]
 #	external = /usr/local/bin/changes_git
 [difftool "sourcetree"]
@@ -191,3 +195,5 @@
 	tool = Kaleidoscope
 [pull]
 	rebase = true
+[init]
+	templatedir = ~/.git_template

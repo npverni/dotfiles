@@ -55,9 +55,10 @@ alias    gpp="g pull && git push"
 alias    gshave="g shave"
 alias    gstash="g stash"
 alias    gstatus="g status"
+alias    glf="g lf"
+alias    glp="g lp"
 function jrgit ()  { ssh jrmanage "mkdir -p /git/$1 && cd /git/$1 && git init --bare" && echo "jrmanage:/git/$1" }
 function jrgitls() { ssh jrmanage "ls /git/" }
-function st(){ git sourcetree }
 ############################################
 #############   POSTGRESQL    ##############
 ############################################
@@ -74,8 +75,17 @@ alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 ############################################
 #############      RAILS      ##############
 ############################################
-alias migrate="rake db:migrate && rake db:rollback && rake db:migrate && rake db:test:prepare"
 alias s="rails s"
+_zeus-installed() {
+  which zeus > /dev/null 2>&1
+}
+migrate() {
+  local zeus_command=""
+  if _zeus-installed; then
+    zeus_command="zeus"
+  fi
+  echo "$zeus_command rake db:migrate && $zeus_command rake db:rollback && $zeus_command rake db:migrate && $zeus_command rake db:test:prepare"
+}
 ############################################
 #############      TMUX       ##############
 ############################################

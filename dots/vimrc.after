@@ -1,6 +1,14 @@
-set background=dark
-set mouse=a
-colorscheme solarized
+"set background=dark
+set hidden
+colorscheme molokai
+
+" powerline
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+          
+" Setup Testing
+let g:rspec_command = "Dispatch zeus rspec {spec}"
 
 au BufRead,BufNewFile *.rabl setf ruby
 au BufRead,BufNewFile *.thor setf ruby
@@ -8,8 +16,6 @@ au BufRead,BufNewFile Gemfile setf ruby
 au BufRead,BufNewFile Gemfile.lock setf yaml
 au BufRead,BufNewFile *.node setf javascript
 au BufRead,BufNewFile *.handlebars,*.hbs,*.html.erb setf html
-
-set completefunc=syntaxcomplete#Complete
 
 set foldmethod=indent
 set foldnestmax=4       "deepest fold is 10 levels
@@ -23,6 +29,9 @@ nmap <C-Down> ddp
 vmap <C-Up> xkP`[V`]
 vmap <C-Down> xp`[V`]
 
+" General
+nmap <leader>me :set mouse=a<CR>
+nmap <leader>md :set mouse=<CR>
 nmap <leader>l :set list!<CR>
 nmap <leader>vb :tabedit $MYVIMRC.before<CR>
 nmap <leader>va :tabedit $MYVIMRC.after<CR>
@@ -30,21 +39,45 @@ nmap <leader>gb :tabedit $MYGVIMRC.before<CR>
 nmap <leader>ga :tabedit $MYGVIMRC.after<CR>
 nmap <leader>n :NERDTreeToggle<CR>
 nmap <leader>m :NERDTreeFind<CR>
-nmap <leader>t :A<CR>
 nmap <leader>p :b#<CR>
 nmap <Leader>j !python -m json.tool<CR>
-nmap <Leader>, :sp ~/Dropbox/work/chargify/notes/project-notes.txt<cr>
-nmap <Leader>. :sp ~/Dropbox/personal/notes/project-notes.txt<cr>
-nmap <Leader>/ :sp ~/Dropbox/personal/notes/wade-notes.txt<cr>
+nmap <Leader>q :q<cr>
+nmap <Leader>, :ccl<cr>
+nmap <Leader>. :tabnew ~/Dropbox/work/chargify/notes/project-notes.txt<cr>
+nmap <Leader>/ :tabnew ~/Dropbox/personal/notes/project-notes.txt<cr>
+" Rails
+nmap <leader>gt :A<CR>
+nmap <Leader>rs :Rschema<cr>
+nmap <Leader>rss :Rschema 
+vmap <Leader>e :Rextract
+vmap <Leader>l Ilet(:<ESC>ea)<ESC>f=r{$a<SPACE>}<ESC>
+" Ruby
+nmap <Leader>bi :Dispatch! bundle install<cr>
+" Tabs
+nmap <Leader>tc :tabnew<cr>
+nmap <Leader>tn :tabnext<cr>
+nmap <Leader>tp :tabprevious<cr>
+" Rspec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>tt :call RunNearestSpec()<CR>
+map <Leader>tl :call RunLastSpec()<CR>
 
-imap <F1> <Esc><CR>
-imap <F2> <Esc>:w<CR>
-imap <F3> <Esc>:sp<CR>
-imap <F4> <Esc>:vsp<CR>
+"nmap <buffer> <C-E> <Plug>(xmpfilter-run)
+"xmap <buffer> <C-E> <Plug>(xmpfilter-run)
+"imap <buffer> <C-E> <Plug>(xmpfilter-run)
 
-nmap <C-T> <Esc>:A<CR>
-nmap <C-S> <Esc>:w<CR>
-nmap <C-Q> <Esc>:x<CR>
+imap <C-l> <Space>=><Space>
+nmap <C-l> i<Space># =><Space>
+
+map <F1> <Esc>:Rtags<CR><CR>
+map <F2> <Esc>:w<CR>
+map <F3> <Esc>:sp<CR>
+map <F4> <Esc>:vsp<CR>
+
+map <C-r> <Esc>:R<CR>
+map <C-t> <Esc>:A<CR>
+map <C-s> <Esc>:w<CR>
+map <C-q> <Esc>:x<CR>
 
 nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
@@ -54,7 +87,7 @@ nmap <silent> <A-Right> :wincmd l<CR>
 vmap <C-x> :!pbcopy<CR>  
 vmap <C-c> :w !pbcopy<CR><CR> 
 
-call pathogen#infect()
+" nmap <Space> <C-d> " Scroll down on space
 
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
@@ -75,5 +108,14 @@ let g:rbpt_colorpairs = [
     \ ['red',         'firebrick3'],
     \ ]
 
-au VimEnter * RainbowParenthesesToggle
+"ruby
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+"improve autocomplete menu color
+highlight Pmenu ctermbg=238 gui=bold
+
+call pathogen#infect()
 set listchars=tab:▸\
+

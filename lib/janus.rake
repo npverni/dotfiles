@@ -71,5 +71,8 @@ def vim_plugins
     https://github.com/vim-scripts/easytags.vim.git
     https://github.com/tpope/gem-ctags.git
     https://github.com/tpope/vim-bundler.git
+    https://github.com/tpope/vim-dispatch.git
+    https://github.com/thoughtbot/vim-rspec.git
+    https://github.com/t9md/vim-ruby-xmpfilter.git
   }
 end
