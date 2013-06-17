@@ -9,7 +9,7 @@ export EDITOR="mvim"
 ZSH_THEME="minimal"
 CASE_SENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
-plugins=(git brew jrowe osx zsh-syntax-highlighting tmux)
+plugins=(git brew jrowe zsh-syntax-highlighting tmux)
 
 alias tmux="TERM=screen-256color-bce tmux"
 alias z="zeus"
@@ -125,13 +125,11 @@ function bigdump() {
  source $ZSH/oh-my-zsh.sh
 
 eval "$(rbenv init -)"
-export PATH=./bin:.:$HOME/.rbenv/bin:$PATH:/usr/local/bin:"$HOME/bin":/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:"$HOME/.vims":$PATH
-
 # Add the following to your ~/.bashrc or ~/.zshrc
 #
 # Alternatively, copy/symlink this file and source in your shell.  See `hitch --setup-path`.
 
-function hitch() {
+hitch() {
   command hitch "$@"
   if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
 }
@@ -146,3 +144,5 @@ if [[ "$unamestr" == 'Darwin' ]]; then
 elif [[ "$unamestr" == 'Darwin' ]]; then
   alias v='vi'
 fi
+hitch
+clown

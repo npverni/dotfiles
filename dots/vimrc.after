@@ -1,12 +1,7 @@
 "set background=dark
 set hidden
-colorscheme molokai
+colorscheme wombat256
 
-" powerline
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
-          
 " Setup Testing
 let g:rspec_command = "Dispatch zeus rspec {spec}"
 
