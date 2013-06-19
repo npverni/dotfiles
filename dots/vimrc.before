@@ -15,6 +15,7 @@ set nocursorline
 syntax sync minlines=256
 
 set shell=/bin/bash
+set shellcmdflag=-ic
 
 
 let mapleader = ","
