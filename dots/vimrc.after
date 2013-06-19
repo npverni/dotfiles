@@ -8,7 +8,9 @@ python powerline_setup()
 python del powerline_setup
           
 " Setup Testing
-let g:rspec_command = "Dispatch zeus rspec {spec}"
+let g:rspec_command = "Dispatch zeus rspec --tty {spec}"
+au BufReadPost quickfix AnsiEsc
+
 
 au BufRead,BufNewFile *.rabl setf ruby
 au BufRead,BufNewFile *.thor setf ruby
@@ -61,6 +63,7 @@ nmap <Leader>tp :tabprevious<cr>
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>tt :call RunNearestSpec()<CR>
 map <Leader>tl :call RunLastSpec()<CR>
+map <Leader>ta :Dispatch zeus rspec spec<CR>
 
 "nmap <buffer> <C-E> <Plug>(xmpfilter-run)
 "xmap <buffer> <C-E> <Plug>(xmpfilter-run)
