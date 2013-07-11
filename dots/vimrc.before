@@ -1,11 +1,4 @@
 set encoding=utf-8
-set fillchars+=stl:\ ,stlnc:\
-set laststatus=2
-set t_Co=256
-hi CursorLine term=bold cterm=bold guibg=Grey40
-
-so ~/.rails.vim.projections
-set wildignore+=*/tmp/*,*/source_maps/*,*.so,*.swp,*.zip,tags,.git/*,.DS_Store
 
 let g:loaded_netrw        = 1 " Disable netrw
 let g:loaded_netrwPlugin  = 1 " Disable netrw
@@ -16,7 +9,6 @@ syntax sync minlines=256
 
 set shell=/bin/bash
 set shellcmdflag=-ic
-
 
 let mapleader = ","
 

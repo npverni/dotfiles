@@ -75,17 +75,16 @@ alias pg_stop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 ############################################
 #############      RAILS      ##############
 ############################################
-alias s="rails s"
-_zeus-installed() {
+_zeus-command() {
   which zeus > /dev/null 2>&1
 }
+
 migrate() {
-  local zeus_command=""
-  if _zeus-installed; then
-    zeus_command="zeus"
-  fi
-  echo "$zeus_command rake db:migrate && $zeus_command rake db:rollback && $zeus_command rake db:migrate && $zeus_command rake db:test:prepare"
+  zeus rake db:migrate && zeus rake db:rollback && zeus rake db:migrate && zeus rake db:test:prepare
 }
+
+alias s="zeus s"
+
 ############################################
 #############      TMUX       ##############
 ############################################
@@ -146,3 +145,7 @@ if [[ "$unamestr" == 'Darwin' ]]; then
 elif [[ "$unamestr" == 'Darwin' ]]; then
   alias v='vi'
 fi
+
+
+alias vc="vim .vim.custom"
+alias deploy="git push origin master && git push heroku master"

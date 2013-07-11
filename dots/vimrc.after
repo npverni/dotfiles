@@ -1,23 +1,36 @@
 "set background=dark
 set hidden
-colorscheme molokai
+colorscheme Tomorrow-Night
 
-" powerline
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+let g:rspec_command = "Dispatch zeus rspec --tty {spec}"
+
+so ~/.rails.vim.projections
+set wildignore+=*/tmp/*,*/source_maps/*,*.so,*.swp,*.zip,tags,.git/*,.DS_Store
+
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+set t_Co=256
+set laststatus=2
+set statusline=\ %f%m%r%h%w\ %=%({%{&ff}\|%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}%k\|%Y}%)\ %([%l,%v][%p%%]\ %)
+
+hi CursorLine term=bold cterm=bold guibg=Grey40
           
 " Setup Testing
-let g:rspec_command = "Dispatch zeus rspec --tty {spec}"
-au BufReadPost quickfix AnsiEsc
+" au FileType qf wincmd L | AnsiEsc
 
-
+au BufRead,BufNewFile *.erb setf eruby
 au BufRead,BufNewFile *.rabl setf ruby
 au BufRead,BufNewFile *.thor setf ruby
 au BufRead,BufNewFile Gemfile setf ruby
 au BufRead,BufNewFile Gemfile.lock setf yaml
 au BufRead,BufNewFile *.node setf javascript
-au BufRead,BufNewFile *.handlebars,*.hbs,*.html.erb setf html
+au BufRead,BufNewFile *.handlebars,*.hbs, setf html
 
 set foldmethod=indent
 set foldnestmax=4       "deepest fold is 10 levels
@@ -35,24 +48,35 @@ vmap <C-Down> xp`[V`]
 nmap <leader>me :set mouse=a<CR>
 nmap <leader>md :set mouse=<CR>
 nmap <leader>l :set list!<CR>
-nmap <leader>vb :tabedit $MYVIMRC.before<CR>
-nmap <leader>va :tabedit $MYVIMRC.after<CR>
-nmap <leader>gb :tabedit $MYGVIMRC.before<CR>
-nmap <leader>ga :tabedit $MYGVIMRC.after<CR>
 nmap <leader>n :NERDTreeToggle<CR>
 nmap <leader>m :NERDTreeFind<CR>
 nmap <leader>p :b#<CR>
 nmap <Leader>j !python -m json.tool<CR>
 nmap <Leader>q :q<cr>
+nmap <Leader>qq :qall<cr>
 nmap <Leader>, :ccl<cr>
-nmap <Leader>. :tabnew ~/Dropbox/work/chargify/notes/project-notes.txt<cr>
-nmap <Leader>/ :tabnew ~/Dropbox/personal/notes/project-notes.txt<cr>
+
+if has("gui_macvim")
+  nmap <leader>va :tab drop $MYVIMRC.after<CR>
+  nmap <leader>vb :tab drop $MYVIMRC.before<CR>
+  nmap <leader>gb :tab drop $MYGVIMRC.before<CR>
+  nmap <leader>ga :tab drop $MYGVIMRC.after<CR>
+  nmap <Leader>.  :tab drop ~/Dropbox/work/chargify/notes/project-notes.txt<CR>
+  nmap <Leader>/  :tab drop ~/Dropbox/personal/notes/project-notes.txt<CR>
+else
+  nmap <leader>va :tabedit $MYVIMRC.after<CR>
+  nmap <leader>vb :tabedit $MYVIMRC.before<CR>
+  nmap <leader>gb :tabedit $MYGVIMRC.before<CR>
+  nmap <leader>ga :tabedit $MYGVIMRC.after<CR>
+  nmap <Leader>.  :tabedit ~/Dropbox/work/chargify/notes/project-notes.txt<CR>
+  nmap <Leader>/  :tabedit ~/Dropbox/personal/notes/project-notes.txt<CR>
+end
 " Rails
 nmap <leader>gt :A<CR>
 nmap <Leader>rs :Rschema<cr>
 nmap <Leader>rss :Rschema 
 vmap <Leader>e :Rextract
-vmap <Leader>l Ilet(:<ESC>ea)<ESC>f=r{$a<SPACE>}<ESC>
+map <Leader>l Ilet(:<ESC>ea)<ESC>f=r{$a<SPACE>}<ESC>
 " Ruby
 nmap <Leader>bi :Dispatch! bundle install<cr>
 " Tabs
@@ -65,22 +89,18 @@ map <Leader>tt :call RunNearestSpec()<CR>
 map <Leader>tl :call RunLastSpec()<CR>
 map <Leader>ta :Dispatch zeus rspec spec<CR>
 
-"nmap <buffer> <C-E> <Plug>(xmpfilter-run)
-"xmap <buffer> <C-E> <Plug>(xmpfilter-run)
-"imap <buffer> <C-E> <Plug>(xmpfilter-run)
-
 imap <C-l> <Space>=><Space>
 nmap <C-l> i<Space># =><Space>
 
-map <F1> <Esc>:Rtags<CR><CR>
+map <F1> <Esc>:Dispatch tag<CR><CR>
 map <F2> <Esc>:w<CR>
 map <F3> <Esc>:sp<CR>
 map <F4> <Esc>:vsp<CR>
 
-map <C-r> <Esc>:R<CR>
-map <C-t> <Esc>:A<CR>
-map <C-s> <Esc>:w<CR>
-map <C-q> <Esc>:x<CR>
+nmap <C-r> :R<CR>
+nmap <C-t> :A<CR>
+nmap <C-s> :w<CR>
+nmap <C-q> :x<CR>
 
 nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
@@ -119,6 +139,12 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 "improve autocomplete menu color
 highlight Pmenu ctermbg=238 gui=bold
 
+if filereadable(".vim.custom")
+  so .vim.custom
+else
+endif
+
 call pathogen#infect()
 set listchars=tab:▸\
+
 
