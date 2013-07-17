@@ -6,10 +6,10 @@ export ZSH="$HOME/.oh-my-zsh"
 
 export EDITOR="mvim"
 
-ZSH_THEME="minimal"
+ZSH_THEME="cloud"
 CASE_SENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
-plugins=(git brew jrowe zsh-syntax-highlighting tmux)
+plugins=(git brew jrowe zsh-syntax-highlighting)
 
 alias tmux="TERM=screen-256color-bce tmux"
 alias z="zeus"
@@ -39,6 +39,7 @@ alias ber="be rspec"
 alias beu="be unicorn -p 3000"
 alias beer="be rspec --format Fuubar --color"
 alias beef="beer --fail-fast"
+alias bi="b install"
 ############################################
 #############   IMAGEMAGICK   ##############
 ############################################
@@ -84,7 +85,7 @@ migrate() {
   if _zeus-installed; then
     zeus_command="zeus"
   fi
-  echo "$zeus_command rake db:migrate && $zeus_command rake db:rollback && $zeus_command rake db:migrate && $zeus_command rake db:test:prepare"
+  $zeus_command rake db:migrate && $zeus_command rake db:rollback && $zeus_command rake db:migrate && $zeus_command rake db:test:prepare
 }
 ############################################
 #############      TMUX       ##############
@@ -146,3 +147,12 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
 fi
 hitch
 clown
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+alias deploy='git push origin master && git push heroku master'
+
+unsetopt correct_all
+
+alias to='be rspec'
+alias ta='be rspec spec'

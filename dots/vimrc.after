@@ -1,12 +1,14 @@
 "set background=dark
 set hidden
-colorscheme wombat256
+colorscheme github
+"colorscheme Tomorrow-Night-Eighties
 
 " Setup Testing
 let g:rspec_command = "Dispatch zeus rspec --tty {spec}"
 au BufReadPost quickfix AnsiEsc
 
 
+au BufRead,BufNewFile *.erb setf eruby
 au BufRead,BufNewFile *.rabl setf ruby
 au BufRead,BufNewFile *.thor setf ruby
 au BufRead,BufNewFile Gemfile setf ruby
@@ -18,6 +20,8 @@ set foldmethod=indent
 set foldnestmax=4       "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
 set foldlevel=1         "this is just what i use
+
+au FileType qf wincmd L | AnsiEsc
 
 " Bubble single lines
 nmap <C-Up> ddkP

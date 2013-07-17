@@ -156,7 +156,7 @@
 ############################################################
 [core]
 	editor = "vi"
-	excludesfile = /Users/jrowe/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [color]
 	ui = true
 [user]
