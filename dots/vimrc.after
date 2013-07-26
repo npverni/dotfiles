@@ -97,7 +97,6 @@ map <F2> <Esc>:w<CR>
 map <F3> <Esc>:sp<CR>
 map <F4> <Esc>:vsp<CR>
 
-nmap <C-r> :R<CR>
 nmap <C-t> :A<CR>
 nmap <C-s> :w<CR>
 nmap <C-q> :x<CR>

@@ -6,7 +6,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 export EDITOR="mvim"
 
-ZSH_THEME="minimal"
+ZSH_THEME="cloud"
 CASE_SENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 plugins=(git brew jrowe osx zsh-syntax-highlighting tmux)
@@ -57,6 +57,7 @@ alias    gstash="g stash"
 alias    gstatus="g status"
 alias    glf="g lf"
 alias    glp="g lp"
+alias    gre="g recent"
 function jrgit ()  { ssh jrmanage "mkdir -p /git/$1 && cd /git/$1 && git init --bare" && echo "jrmanage:/git/$1" }
 function jrgitls() { ssh jrmanage "ls /git/" }
 ############################################
