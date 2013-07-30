@@ -1,7 +1,6 @@
 require 'rake'
 
 DOTS_DIR      = File.expand_path('./dots', File.dirname(__FILE__))
-OH_MY_ZSH_DIR = File.expand_path('./oh-my-zsh', File.dirname(__FILE__))
 
 LIBS = Dir[File.expand_path('./lib', File.dirname(__FILE__)) + "/*.rake"]
 LIBS.each{|lib| load lib}

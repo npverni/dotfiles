@@ -13,8 +13,6 @@ plugins=(git brew jrowe osx zsh-syntax-highlighting tmux)
 
 alias tmux="TERM=screen-256color-bce tmux"
 alias z="zeus"
-alias zc="zeus cucumber"
-
 alias tag="ctags -R --exclude=.git --exclude=log *"
 alias bfs="bundle exec foreman start"
 
@@ -23,7 +21,6 @@ autoload -U colors && colors
 # source $ZSH/oh-my-zsh.sh
 
 [[ -s "$HOME/.privates" ]]                                 && . "$HOME/.privates"
-[[ -s "$HOME/.tidbits/mhsrc" ]]                            && . "$HOME/.tidbits/mhsrc"
 [[ -s "$HOME/.tmuxinator/scripts/tmuxinator" ]]            && . "$HOME/.tmuxinator/scripts/tmuxinator"
 [[ -s "$HOME/.tmuxinator/scripts/tmuxinator-completion" ]] && . "$HOME/.tmuxinator/scripts/tmuxinator-completion"
 
@@ -33,11 +30,6 @@ autoload -U colors && colors
 alias b="bundle"
 alias be="RUBYOPT=W0 b exec"
 alias bi="b install"
-alias bec="be cucumber"
-alias becp="be cucumber -f pretty"
-alias bes="be spec"
-alias ber="be rspec"
-alias beu="be unicorn -p 3000"
 alias beer="be rspec --format Fuubar --color"
 alias beef="beer --fail-fast"
 ############################################
@@ -62,7 +54,7 @@ alias    gre="g recent"
 function jrgit ()  { ssh jrmanage "mkdir -p /git/$1 && cd /git/$1 && git init --bare" && echo "jrmanage:/git/$1" }
 function jrgitls() { ssh jrmanage "ls /git/" }
 ############################################
-#############   POSTGRESQL    ##############
+#############   MYSQL    ###################
 ############################################
 function mys()
 {
@@ -147,7 +139,3 @@ if [[ "$unamestr" == 'Darwin' ]]; then
 elif [[ "$unamestr" == 'Darwin' ]]; then
   alias v='vi'
 fi
-
-
-alias vc="vim .vim.custom"
-alias deploy="git push origin master && git push heroku master"

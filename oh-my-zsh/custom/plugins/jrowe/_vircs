@@ -1,4 +1,0 @@
-#compdef vircs
-compadd $(vircs list)
-
-

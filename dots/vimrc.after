@@ -1,146 +1,68 @@
-"set background=dark
-set hidden
-colorscheme jellybeans
+set term=xterm-256color
+color jellybeans
 
-set guifont=Monaco\ for\ Powerline:h14
-let g:rspec_command = "Dispatch zeus rspec --tty {spec}"
+" move between windows
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-H> <C-W>h
+map <C-L> <C-W>l
 
-"so ~/.rails.vim.projections
-set wildignore+=*/tmp/*,*/source_maps/*,*.so,*.swp,*.zip,tags,.git/*,.DS_Store
-
-if exists('$TMUX')
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-endif
-
-set t_Co=256
-set laststatus=2
-set statusline=\ %f%m%r%h%w\ %=%({%{&ff}\|%{(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\")}%k\|%Y}%)\ %([%l,%v][%p%%]\ %)
-
-hi CursorLine term=bold cterm=bold guibg=Grey40
-          
-" Setup Testing
-" au FileType qf wincmd L | AnsiEsc
-
-au BufRead,BufNewFile *.erb setf eruby
-au BufRead,BufNewFile *.rabl setf ruby
-au BufRead,BufNewFile *.thor setf ruby
-au BufRead,BufNewFile Gemfile setf ruby
-au BufRead,BufNewFile Gemfile.lock setf yaml
-au BufRead,BufNewFile *.node setf javascript
-au BufRead,BufNewFile *.handlebars,*.hbs, setf html
-
-set foldmethod=indent
-set foldnestmax=4       "deepest fold is 10 levels
-set nofoldenable        "dont fold by default
-set foldlevel=1         "this is just what i use
-
-" Bubble single lines
-nmap <C-Up> ddkP
-nmap <C-Down> ddp
-" Bubble multiple lines
-vmap <C-Up> xkP`[V`]
-vmap <C-Down> xp`[V`]
-
-" General
-nmap <leader>me :set mouse=a<CR>
-nmap <leader>md :set mouse=<CR>
-nmap <leader>l :set list!<CR>
-nmap <leader>n :NERDTreeToggle<CR>
 nmap <leader>m :NERDTreeFind<CR>
-nmap <leader>p :b#<CR>
-nmap <Leader>j !python -m json.tool<CR>
-nmap <Leader>q :q<cr>
-nmap <Leader>qq :qall<cr>
-nmap <Leader>, :ccl<cr>
+nmap <C-T> :A<CR>
 
-if has("gui_macvim")
-  nmap <leader>va :tab drop $MYVIMRC.after<CR>
-  nmap <leader>vb :tab drop $MYVIMRC.before<CR>
-  nmap <leader>gb :tab drop $MYGVIMRC.before<CR>
-  nmap <leader>ga :tab drop $MYGVIMRC.after<CR>
-else
-  nmap <leader>va :tabedit $MYVIMRC.after<CR>
-  nmap <leader>vb :tabedit $MYVIMRC.before<CR>
-  nmap <leader>gb :tabedit $MYGVIMRC.before<CR>
-  nmap <leader>ga :tabedit $MYGVIMRC.after<CR>
-end
-" Rails
-nmap <leader>gt :A<CR>
-nmap <Leader>rs :Rschema<cr>
-nmap <Leader>rss :Rschema 
-vmap <Leader>e :Rextract
-map <Leader>l Ilet(:<ESC>ea)<ESC>f=r{$a<SPACE>}<ESC>
-" Ruby
-nmap <Leader>bi :Dispatch! bundle install<cr>
-" Tabs
-nmap <Leader>tc :tabnew<cr>
-nmap <Leader>tn :tabnext<cr>
-nmap <Leader>tp :tabprevious<cr>
-" Rspec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>tt :call RunNearestSpec()<CR>
-map <Leader>tl :call RunLastSpec()<CR>
-map <Leader>ta :Dispatch zeus rspec spec<CR>
+" custom font action
+ set guifont=Monaco\ for\ Powerline:h14
+" set guifont=Source\ Code\ Pro:h14
+ set antialias
+set cursorline
+set gcr=n:blinkon0
 
-imap <C-l> <Space>=><Space>
-nmap <C-l> i<Space># =><Space>
+" yank to system clipboard
+set clipboard=unnamed
 
-map <F1> <Esc>:Dispatch tag<CR><CR>
-map <F2> <Esc>:w<CR>
-map <F3> <Esc>:sp<CR>
-map <F4> <Esc>:vsp<CR>
-
-nmap <C-t> :A<CR>
-nmap <C-s> :w<CR>
-nmap <C-q> :x<CR>
-
-nmap <silent> <A-Up> :wincmd k<CR>
-nmap <silent> <A-Down> :wincmd j<CR>
-nmap <silent> <A-Left> :wincmd h<CR>
-nmap <silent> <A-Right> :wincmd l<CR>
-
-vmap <C-x> :!pbcopy<CR>  
-vmap <C-c> :w !pbcopy<CR><CR> 
-
-" nmap <Space> <C-d> " Scroll down on space
-
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
-
-"ruby
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-"improve autocomplete menu color
-highlight Pmenu ctermbg=238 gui=bold
-
-if filereadable(".vim.custom")
-  so .vim.custom
-else
+" hide the huge macvim toolbar
+if has("gui_running")
+  set guioptions=egmrt
 endif
 
-call pathogen#infect()
-set listchars=tab:▸\
+" disable audible bell
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+  autocmd GUIEnter * set visualbell t_vb=
+endif
 
+let g:Powerline_symbols = 'fancy'
+
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+function! <SID>StripEmptyLines()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    g/^$/d
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+nnoremap <silent> <leader>s :call <SID>StripTrailingWhitespaces()<CR>
+nnoremap <silent> <leader>e :call <SID>StripEmptyLines()<CR>
+
+if has("gui_running")
+  " GUI is running or is about to start.
+  " Maximize gvim window.
+  set lines=999 columns=999
+endif
+
+" set listchars=tab:▸\ ,eol:¬
+
+let g:ctrlp_max_height = 20
 
