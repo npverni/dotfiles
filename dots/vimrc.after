@@ -1,10 +1,11 @@
 "set background=dark
 set hidden
-colorscheme Tomorrow-Night
+colorscheme jellybeans
 
+set guifont=Monaco\ for\ Powerline:h14
 let g:rspec_command = "Dispatch zeus rspec --tty {spec}"
 
-so ~/.rails.vim.projections
+"so ~/.rails.vim.projections
 set wildignore+=*/tmp/*,*/source_maps/*,*.so,*.swp,*.zip,tags,.git/*,.DS_Store
 
 if exists('$TMUX')
@@ -61,15 +62,11 @@ if has("gui_macvim")
   nmap <leader>vb :tab drop $MYVIMRC.before<CR>
   nmap <leader>gb :tab drop $MYGVIMRC.before<CR>
   nmap <leader>ga :tab drop $MYGVIMRC.after<CR>
-  nmap <Leader>.  :tab drop ~/Dropbox/work/chargify/notes/project-notes.txt<CR>
-  nmap <Leader>/  :tab drop ~/Dropbox/personal/notes/project-notes.txt<CR>
 else
   nmap <leader>va :tabedit $MYVIMRC.after<CR>
   nmap <leader>vb :tabedit $MYVIMRC.before<CR>
   nmap <leader>gb :tabedit $MYGVIMRC.before<CR>
   nmap <leader>ga :tabedit $MYGVIMRC.after<CR>
-  nmap <Leader>.  :tabedit ~/Dropbox/work/chargify/notes/project-notes.txt<CR>
-  nmap <Leader>/  :tabedit ~/Dropbox/personal/notes/project-notes.txt<CR>
 end
 " Rails
 nmap <leader>gt :A<CR>

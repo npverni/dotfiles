@@ -32,6 +32,7 @@ autoload -U colors && colors
 ############################################
 alias b="bundle"
 alias be="RUBYOPT=W0 b exec"
+alias bi="b install"
 alias bec="be cucumber"
 alias becp="be cucumber -f pretty"
 alias bes="be spec"
