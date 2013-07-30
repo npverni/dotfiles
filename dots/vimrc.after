@@ -1,5 +1,5 @@
 set term=xterm-256color
-color jellybeans
+color Tomorrow-Night
 
 " move between windows
 map <C-J> <C-W>j
@@ -11,9 +11,8 @@ nmap <leader>m :NERDTreeFind<CR>
 nmap <C-T> :A<CR>
 
 " custom font action
- set guifont=Monaco\ for\ Powerline:h14
-" set guifont=Source\ Code\ Pro:h14
- set antialias
+set guifont=Monaco\ for\ Powerline:h14
+set antialias
 set cursorline
 set gcr=n:blinkon0
 
