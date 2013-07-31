@@ -40,20 +40,6 @@ function ms()
   identify $1|third
 }
 ############################################
-#############      GIT        ##############
-############################################
-alias    recent="git recent"
-alias    g="git"
-alias    gpp="g pull && git push"
-alias    gshave="g shave"
-alias    gstash="g stash"
-alias    gstatus="g status"
-alias    glf="g lf"
-alias    glp="g lp"
-alias    gre="g recent"
-function jrgit ()  { ssh jrmanage "mkdir -p /git/$1 && cd /git/$1 && git init --bare" && echo "jrmanage:/git/$1" }
-function jrgitls() { ssh jrmanage "ls /git/" }
-############################################
 #############   MYSQL    ###################
 ############################################
 function mys()

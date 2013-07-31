@@ -26,6 +26,11 @@ task :espresso do
   fetch_theme git_url, :vim_files => false, :terminal_files => '*.terminal'
 end
 
+desc "Grabs and installs the sunburst theme"
+task :sunburst do
+  git_url = "https://github.com/sickill/vim-sunburst.git"
+  fetch_theme git_url, :vim_files => 'colors/*.vim', :terminal_files => false
+end
 private
 
 def fetch_theme(git_url, opts={:vim_files => false, :terminal_files => false})
